@@ -14,11 +14,7 @@ function App() {
   const [number, setNumber] = useState(0);
   const [dog, setDog] = useState({});
   const [index, setIndex] = useState(0);
-  const [today, setToday] = useState({
-    month: "December",
-    day: 31,
-    weekday: "Sunday",
-  });
+  const [today, setToday] = useState({});
   const [vibe, setVibe] = useState("");
 
   function getNumber() {
