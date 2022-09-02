@@ -11,30 +11,25 @@ const colors = [
 
 function App() {
   const [color, setColor] = useState("lemonchiffon");
-  const [number, setNumber] = useState(0);
   const [dog, setDog] = useState({});
   const [index, setIndex] = useState(0);
+  const [number, setNumber] = useState(0);
   const [today, setToday] = useState({});
   const [vibe, setVibe] = useState("");
-
-  function getNumber() {
-    setNumber(Math.random());
-  }
 
   function handleOnChange(event) {
     setVibe(event.target.value);
   }
 
-  function updateDay() {
+  function updateIndex() {
     setIndex((index + 1) % days.length);
-    setToday(days[index]);
   }
 
   return (
     <div className="App">
       <header style={{ backgroundColor: color }}>
         <h1>Daily Home Page </h1>
-        <button onClick={updateDay}>Update Day</button>
+        <button onClick={updateIndex}>Update Day</button>
       </header>
       <main>
         <div className="date">
