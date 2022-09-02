@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import days from "./data";
 const colors = [
   "papayawhip",
@@ -17,26 +17,13 @@ function App() {
   const [today, setToday] = useState({});
   const [vibe, setVibe] = useState("");
 
-  function getData() {
-    console.log("I am getting data");
-  }
-
   function handleOnChange(event) {
     setVibe(event.target.value);
   }
 
   function updateIndex() {
-    setToday(days[index]);
     setIndex((index + 1) % days.length);
   }
-
-  // useEffect(() => {
-  //   getData();
-  // });
-
-  useEffect(() => {
-    setNumber(Math.random());
-  }, []);
 
   return (
     <div className="App">
@@ -60,6 +47,7 @@ function App() {
           <h5>{vibe}</h5>
         </div>
         <div className="dog">
+          <button>Change dog</button>
           <h2>Featured dog:</h2>
           <img src={dog.message} alt="Featured Dog" />
         </div>
