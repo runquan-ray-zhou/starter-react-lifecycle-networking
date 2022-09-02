@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import days from "./data";
 const colors = [
   "papayawhip",
@@ -23,56 +23,12 @@ function App() {
   function handleOnChange(event) {
     setVibe(event.target.value);
   }
-  // Demonstrate object is not equal to object
-  //   const oneObj = {};
-  //   const anotherObj = {};
 
-  //   console.log(oneObj === anotherObj);
-
-  // ES WARNING BAD
-  // just value of today bad
-  // BUT WE DON't WANT TO CHANGE every time index changes
-  // We only want to change when month changes
-  // and demo need the nested value
-  useEffect(() => {
-    setColor(colors[index]);
-  }, [today.month]);
-  // when does this happen?
-  // On button click
-  // GIVE THEM THIS FUNCTION
   function updateDay() {
     setIndex((index + 1) % days.length);
     setToday(days[index]);
   }
-  function getData() {
-    setData(Math.random());
-  }
 
-  function getFeaturedDog() {
-    fetch("https://dog.ceo/api/breeds/image/random")
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        setDog(json);
-      })
-      .catch((err) => {
-        console.log("error fetching image");
-      });
-  }
-  // first infinite loop
-  // no dependency
-  // today dependency
-  useEffect(() => {
-    getData();
-  }, [today]);
-  // demonstrate log happens after render
-  useEffect(() => {
-    console.log(vibe);
-  }, [vibe]);
-
-  useEffect(() => {
-    getFeaturedDog();
-  }, []);
   return (
     <div className="App">
       <header style={{ backgroundColor: color }}>
