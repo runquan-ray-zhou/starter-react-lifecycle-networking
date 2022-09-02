@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import days from "./data";
 const colors = [
   "papayawhip",
@@ -11,15 +11,20 @@ const colors = [
 
 function App() {
   const [color, setColor] = useState("lemonchiffon");
+  const [number, setNumber] = useState(0);
   const [dog, setDog] = useState({});
+  const [index, setIndex] = useState(0);
   const [today, setToday] = useState({
     month: "December",
     day: 31,
     weekday: "Sunday",
   });
-  const [index, setIndex] = useState(0);
-  const [data, setData] = useState(0);
   const [vibe, setVibe] = useState("");
+
+  function getNumber() {
+    setNumber(Math.random());
+  }
+
   function handleOnChange(event) {
     setVibe(event.target.value);
   }
@@ -43,7 +48,7 @@ function App() {
           <h5>{today.day}</h5>
         </div>
         <div className="lucky">
-          <h2>Today's lucky number is: {data}</h2>
+          <h2>Today's lucky number is: {number}</h2>
         </div>
         <div className="vibe">
           <input type="text" onChange={handleOnChange} />
