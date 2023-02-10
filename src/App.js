@@ -42,7 +42,11 @@ function App() {
           <h2>Today's lucky number is: {number}</h2>
         </div>
         <div className="vibe">
-          <input type="text" onChange={handleOnChange} />
+          <input
+            type="text"
+            onChange={handleOnChange}
+            placeholder="enter your vibe here"
+          />
           <h4>Today's vibe is: </h4>
           <h5>{vibe}</h5>
         </div>
