@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import days from "./data";
 const colors = [
   "papayawhip",
@@ -17,13 +17,56 @@ function App() {
   const [today, setToday] = useState({});
   const [vibe, setVibe] = useState("");
 
-  function handleOnChange(event) {
-    setVibe(event.target.value);
-  }
+  // function getData() {
+  //   console.log("I am getting data");
+  // }
+  // useEffect(() => {
+  //   getData();
+  // });
 
-  function updateIndex() {
-    setIndex((index + 1) % days.length);
-  }
+  useEffect(() => {
+    setNumber(Math.random());
+  }, []);
+
+  useEffect(() => {
+  setToday(days[index]);
+}, [index]);
+
+useEffect(() => {
+  console.log(vibe);
+}, [vibe]);
+
+useEffect(() => {
+  setColor(colors[index]);
+}, [today.month]);
+
+function handleOnChange(event) {
+  setVibe(event.target.value);
+}
+
+function updateIndex() {
+  setIndex((index + 1) % days.length);
+}
+
+function handleOnChange(event) {
+  setVibe(event.target.value);
+  console.log(vibe);
+}
+
+function getFeaturedDog() {
+  fetch("https://api.thecatapi.com/v1/images/search")
+    .then((response) => response.json())
+    .then((json) => {
+      setDog(json[0]);
+    })
+    // .catch((err) => {
+    //   console.log("error fetching image");
+    // });
+}
+
+useEffect(() => {
+  getFeaturedDog();
+}, []);
 
   return (
     <div className="App">
@@ -51,9 +94,9 @@ function App() {
           <h5>{vibe}</h5>
         </div>
         <div className="dog">
-          <button>Change dog</button>
-          <h2>Featured dog:</h2>
-          <img src={dog.message} alt="Featured Dog" />
+          <button onClick={getFeaturedDog}>Change cat</button>
+          <h2>Featured cat:</h2>
+          <img src={dog.url} alt="Featured Dog" />
         </div>
       </main>
     </div>
