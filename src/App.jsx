@@ -64,7 +64,7 @@ useEffect(() => {
   return (
     <div className="App">
       <header style={{ backgroundColor: color }}>
-        <h1>Niki's Daily Cat Picture Home Page </h1>
+        <h1>Niki's Cat Picture Home Page</h1>
         <button onClick={updateIndex}>Update Day</button>
       </header>
       <main>
