@@ -17,16 +17,9 @@ function App() {
   const [today, setToday] = useState({});
   const [vibe, setVibe] = useState("");
 
-  // function getData() {
-  //   console.log("I am getting data");
-  // }
-  // useEffect(() => {
-  //   getData();
-  // });
-
   useEffect(() => {
-    setNumber(Math.random());
-  }, []);
+    setNumber(Math.round(Math.random() * 100));
+  }, [index]);
 
   useEffect(() => {
   setToday(days[index]);
@@ -59,19 +52,19 @@ function getFeaturedDog() {
     .then((json) => {
       setDog(json[0]);
     })
-    // .catch((err) => {
-    //   console.log("error fetching image");
-    // });
+    .catch((err) => {
+      console.log("error fetching image");
+    });
 }
 
 useEffect(() => {
   getFeaturedDog();
-}, []);
+}, [index]);
 
   return (
     <div className="App">
       <header style={{ backgroundColor: color }}>
-        <h1>Daily Home Page </h1>
+        <h1>Niki's Daily Cat Picture Home Page </h1>
         <button onClick={updateIndex}>Update Day</button>
       </header>
       <main>
